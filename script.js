@@ -1,58 +1,125 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let hearts = 0;
-    let coins = 100;
+// DOM Elements
+const heartCountSpan = document.getElementById('heart-count');
+const coinCountSpan = document.getElementById('coin-count');
+const callHistoryDiv = document.getElementById('call-history');
+const clearHistoryBtn = document.getElementById('clear-history-btn');
+const navbarCopyBtn = document.getElementById('navbar-copy-btn');
 
-    const heartDisplay = document.getElementById('heart-count');
-    const coinDisplay = document.getElementById('coin-count');
-    const callHistoryList = document.getElementById('call-history-list');
-    const clearHistoryBtn = document.getElementById('clear-history-btn');
+// Initialize counts
+let heartCount = 0;
+let coinCount = 100;
+let copyCount = 0;
 
-    // Clear call history
-    clearHistoryBtn.addEventListener('click', () => {
-        callHistoryList.innerHTML = '';
+// Update heart, coin, and copy counts in the UI
+function updateCounts() {
+  heartCountSpan.textContent = heartCount;
+  coinCountSpan.textContent = coinCount;
+  document.getElementById('copy-count').textContent = copyCount;
+}
+
+// Toggle heart icon and update count
+function toggleHeart(heartIcon) {
+  heartIcon.classList.toggle('fa-solid');
+  heartIcon.classList.toggle('fa-regular');
+  if (heartIcon.classList.contains('fa-solid')) {
+    heartCount++;
+  } else {
+    heartCount--;
+  }
+  updateCounts();
+}
+
+// Format time as HH:MM AM/PM
+function formatTime(date) {
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // Convert 0 to 12
+  minutes = minutes < 10 ? '0' + minutes : minutes;
+  return `${hours}:${minutes} ${ampm}`;
+}
+
+// Handle call button click
+function handleCall(serviceName, serviceNumber) {
+  if (coinCount < 20) {
+    alert('কল করার জন্য পর্যাপ্ত কয়েন নেই!');
+    return;
+  }
+  coinCount -= 20;
+  updateCounts();
+  alert(`${serviceName} এ কল করা হচ্ছে: ${serviceNumber}`);
+
+  // Add to call history with time
+  const callTime = formatTime(new Date());
+  const callItem = document.createElement('div');
+  callItem.className = 'bg-white p-3 rounded-lg shadow flex justify-between items-center';
+  callItem.innerHTML = `
+    <div>
+      <p class="font-semibold">${serviceName}</p>
+      <p class="text-sm text-gray-500">${serviceNumber}</p>
+    </div>
+    <span class="text-xs text-gray-500">${callTime}</span>
+  `;
+  callHistoryDiv.prepend(callItem);
+}
+
+// Handle copy button click
+function handleCopy(serviceNumber) {
+  navigator.clipboard.writeText(serviceNumber)
+    .then(() => {
+      copyCount++;
+      updateCounts();
+      alert(`${serviceNumber} কপি করা হয়েছে!`);
+    })
+    .catch(err => {
+      console.error('কপি করতে ব্যর্থ: ', err);
     });
+}
 
-    // Loop through 9 cards
-    for (let i = 1; i <= 9; i++) {
-        const heartIcon = document.getElementById(`heart-${i}`);
-        const callBtn = document.getElementById(`call-${i}`);
-        const card = document.getElementById(`card-${i}`);
-
-        // Heart click
-        heartIcon.addEventListener('click', () => {
-            hearts++;
-            heartDisplay.textContent = hearts;
-            heartIcon.classList.toggle('text-red-500');
-        });
-
-        // Call click
-        callBtn.addEventListener('click', () => {
-            const serviceName = card.querySelector('h3').textContent;
-            const serviceNumber = card.querySelector('h2 span').textContent;
-
-            if (coins < 20) {
-                alert('Not enough coins to make a call!');
-                return;
-            }
-
-            coins -= 20;
-            coinDisplay.textContent = coins;
-
-            alert(`Calling ${serviceName} (${serviceNumber})`);
-
-            // Create shadowed div
-            const div = document.createElement('div');
-            div.className = 'bg-white shadow-md rounded-md p-3 mb-2';
-
-            const now = new Date();
-            const time = now.toLocaleTimeString(); // e.g. "8:32:15 PM"
-
-            div.innerHTML = `
-                <p class="font-semibold">${serviceName}</p>
-                <p class="text-gray-500">${serviceNumber} <span class="text-gray-400 ml-2">[${time}]</span></p>
-            `;
-
-            callHistoryList.appendChild(div);
-        });
-    }
+// Clear call history
+clearHistoryBtn.addEventListener('click', () => {
+  callHistoryDiv.innerHTML = '<p class="text-center text-gray-500 py-4">কল হিস্টরি খালি</p>';
 });
+
+// Add copy count to navbar copy button
+navbarCopyBtn.innerHTML = `
+  <span id="copy-count">${copyCount}</span>
+  <i class="fa-solid fa-copy ml-1"></i> Copy
+`;
+
+// Add event listeners to all heart icons
+document.querySelectorAll('[id^="heart-"]').forEach(heartIcon => {
+  heartIcon.addEventListener('click', () => {
+    toggleHeart(heartIcon);
+  });
+});
+
+// Add event listeners to all call buttons
+document.querySelectorAll('.call-btn').forEach(callBtn => {
+  const card = callBtn.closest('.card');
+  const serviceName = card.querySelector('h3').textContent;
+  const serviceNumber = card.querySelector('span').textContent;
+  callBtn.addEventListener('click', () => {
+    handleCall(serviceName, serviceNumber);
+  });
+});
+
+// Add event listeners to all copy buttons
+document.querySelectorAll('.copy-btn').forEach(copyBtn => {
+  const card = copyBtn.closest('.card');
+  const serviceNumber = card.querySelector('span').textContent;
+  copyBtn.addEventListener('click', () => {
+    handleCopy(serviceNumber);
+  });
+});
+
+// Navbar copy button event listener
+navbarCopyBtn.addEventListener('click', () => {
+  copyCount++;
+  updateCounts();
+  alert('নেভবারের "Copy" বাটন ক্লিক করা হয়েছে!');
+});
+
+// Initialize UI
+updateCounts();

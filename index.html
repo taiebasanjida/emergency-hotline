@@ -1,60 +1,53 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Emergency Service</title>
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
     integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    
+    .navbar .btn.bg-green-600 {
+      background-color: #16a34a; 
+    }
+  </style>
 </head>
-
-<body class="max-auto px-">
-
+<body class="max-auto bg-gray-50">
   <!-- Navbar -->
-  <div class="w-full max-w-[1920px] mx-auto navbar bg-white text-green-700 px-6 shadow-[0_4px_6px_-1px_#0000001a]">
+  <div class="w-full max-w-[1920px] mx-auto navbar bg-white text-green-700 px-6 shadow flex flex-col sm:flex-row sm:items-center">
     <!-- Left -->
-    <div class="flex items-center gap-2">
+    <div class="flex flex-col sm:flex-row items-center gap-2">
       <img src="./assets/logo.png" alt="" class="w-16 h-16 object-contain">
-      <span class="font-bold text-4xl">Emergency <br>Service</span>
+      <span class="font-bold text-4xl text-center sm:text-left">Emergency <br>Service</span>
     </div>
-
     <!-- Right -->
-    <div class="ml-auto flex gap-2 items-center">
-      <button id="heart-count-btn" class="btn rounded-xl w-24 bg-green-50 text-lg border border-green-200">
+    <div class="mt-4 sm:mt-0 sm:ml-auto flex flex-col sm:flex-row gap-2 items-center">
+      <button id="heart-count-btn" class="btn rounded-xl w-24 bg-green-50 text-lg border border-green-200 flex justify-center items-center gap-1">
         <span id="heart-count">0</span>
-        <img src="./assets/heart.png" alt="" class="h-full object-contain">
+        <img src="./assets/heart.png" alt="" class="h-5 w-5 object-contain">
       </button>
-      <button id="coin-count-btn" class="btn rounded-xl w-24 bg-green-50 text-lg border border-green-200">
+      <button id="coin-count-btn" class="btn rounded-xl w-24 bg-green-50 text-lg border border-green-200 flex justify-center items-center gap-1">
         <span id="coin-count">100</span>
-        <img src="./assets/coin.png" alt="" class="h-full object-contain">
+        <img src="./assets/coin.png" alt="" class="h-5 w-5 object-contain">
       </button>
-      <button class="btn btn-success rounded-full px-5">copy</button>
+      <button id="navbar-copy-btn" class="btn bg-green-600 hover:bg-green-700 text-white rounded-full px-5">Copy</button>
     </div>
   </div>
-
-  <!-- banner -->
-  <section
-    class="w-full max-w-[1920px] h-[239px] mx-auto bg-gradient-to-r from-green-900 via-green-700 to-green-900  flex flex-col justify-center items-center text-center px-6">
+  <!-- Banner -->
+  <section class="w-full max-w-[1920px] h-[239px] mx-auto bg-gradient-to-r from-green-900 via-green-700 to-green-900 flex flex-col justify-center items-center text-center px-6">
     <img src="./assets/logo-dark.png" alt="Logo" class="h-16 w-auto mb-6 object-contain">
     <h2 class="text-xl font-bold text-white mb-6">Emergency Service Directory</h2>
-    <p class=" text-white ">
-      Government Emergency Services at Your Fingertip. A Project by Government of the People’s Republic of Bangladesh
-    </p>
+    <p class="text-white">Government Emergency Services at Your Fingertip. A Project by Government of the People’s Republic of Bangladesh</p>
   </section>
-
-  <main class="w-11/12 mx-auto grid grid-cols-12 gap-8 py-12">
-
+  <main class="w-full sm:w-11/12 mx-auto grid grid-cols-12 gap-4 sm:gap-8 py-6 sm:py-12">
     <!-- Cards Section -->
-    <section class="w-full max-w-[1920px] mx-auto  col-span-9 bg-white p-6 rounded-lg shadow-md">
-      <div class="grid grid-cols-3 gap-6">
-
-        <!-- Loop for 9 cards -->
+    <section class="w-full max-w-[1920px] mx-auto col-span-12 sm:col-span-9 bg-white p-6 rounded-lg shadow-md">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
         <!-- Card 1 -->
         <div class="card shadow-md rounded-lg p-4 relative" id="card-1">
           <div class="flex justify-between items-start">
@@ -70,11 +63,10 @@
             </div>
           </div>
           <div class="mt-4 flex gap-2">
-            <button class="btn btn-outline flex-1 text-sm" id="copy-1"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn bg-green-500 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-1"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn btn-outline flex-1 text-sm copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+            <button class="btn bg-green-500 hover:bg-green-700 border-none flex-1 text-sm text-white call-btn"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
-
         <!-- Card 2 -->
         <div class="card shadow-md rounded-lg p-4 relative" id="card-2">
           <div class="flex justify-between items-start">
@@ -90,11 +82,10 @@
             </div>
           </div>
           <div class="mt-4 flex gap-2">
-            <button class="btn btn-outline flex-1 text-sm" id="copy-2"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn bg-green-500 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-2"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn btn-outline flex-1 text-sm copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+            <button class="btn bg-green-500 hover:bg-green-700 border-none flex-1 text-sm text-white call-btn"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
-
         <!-- Card 3 -->
         <div class="card shadow-md rounded-lg p-4 relative" id="card-3">
           <div class="flex justify-between items-start">
@@ -110,11 +101,10 @@
             </div>
           </div>
           <div class="mt-4 flex gap-2">
-            <button class="btn btn-outline flex-1 text-sm" id="copy-3"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn bg-green-500 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-3"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn btn-outline flex-1 text-sm copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+            <button class="btn bg-green-500 hover:bg-green-700 border-none flex-1 text-sm text-white call-btn"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
-
         <!-- Card 4 -->
         <div class="card shadow-md rounded-lg p-4 relative" id="card-4">
           <div class="flex justify-between items-start">
@@ -130,11 +120,10 @@
             </div>
           </div>
           <div class="mt-4 flex gap-2">
-            <button class="btn btn-outline flex-1 text-sm" id="copy-4"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-4"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn btn-outline flex-1 text-sm copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white call-btn"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
-
         <!-- Card 5 -->
         <div class="card shadow-md rounded-lg p-4 relative" id="card-5">
           <div class="flex justify-between items-start">
@@ -150,11 +139,10 @@
             </div>
           </div>
           <div class="mt-4 flex gap-2">
-            <button class="btn btn-outline flex-1 text-sm" id="copy-5"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-5"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn btn-outline flex-1 text-sm copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white call-btn"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
-
         <!-- Card 6 -->
         <div class="card shadow-md rounded-lg p-4 relative" id="card-6">
           <div class="flex justify-between items-start">
@@ -170,11 +158,10 @@
             </div>
           </div>
           <div class="mt-4 flex gap-2">
-            <button class="btn btn-outline flex-1 text-sm" id="copy-6"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-6"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn btn-outline flex-1 text-sm copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white call-btn"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
-
         <!-- Card 7 -->
         <div class="card shadow-md rounded-lg p-4 relative" id="card-7">
           <div class="flex justify-between items-start">
@@ -190,11 +177,10 @@
             </div>
           </div>
           <div class="mt-4 flex gap-2">
-            <button class="btn btn-outline flex-1 text-sm" id="copy-7"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-7"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn btn-outline flex-1 text-sm copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white call-btn"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
-
         <!-- Card 8 -->
         <div class="card shadow-md rounded-lg p-4 relative" id="card-8">
           <div class="flex justify-between items-start">
@@ -210,11 +196,10 @@
             </div>
           </div>
           <div class="mt-4 flex gap-2">
-            <button class="btn btn-outline flex-1 text-sm" id="copy-8"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-8"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn btn-outline flex-1 text-sm copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white call-btn"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
-
         <!-- Card 9 -->
         <div class="card shadow-md rounded-lg p-4 relative" id="card-9">
           <div class="flex justify-between items-start">
@@ -230,28 +215,26 @@
             </div>
           </div>
           <div class="mt-4 flex gap-2">
-            <button class="btn btn-outline flex-1 text-sm" id="copy-9"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-9"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn btn-outline flex-1 text-sm copy-btn"><i class="fa-solid fa-copy"></i> Copy</button>
+            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white call-btn"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
-
       </div>
     </section>
-
-    <!-- Call History -->
-    <aside class="col-span-3 bg-white p-6 rounded-lg shadow-md">
-      <div class="flex justify-between mx-auto">
-        <p><i class="fa-regular fa-clock"></i> Call History</p>
-        <button id="clear-history-btn" class="btn btn-success rounded-full px-5">Clear</button>
+    <!-- Call History Section -->
+    <section class="col-span-12 sm:col-span-3 mt-6 sm:px-4 sm:mt-0 bg-white shadow-md">
+      <div class="flex flex-col sm:flex-row sm:justify-between gap-2 py-5 items-center">
+        <p class="flex gap-2 items-center">
+          <i class="fa-regular fa-clock"></i>
+          <span>Call History</span>
+        </p>
+        <button id="clear-history-btn" class="btn bg-green-600 hover:bg-green-700 text-white rounded-full px-5 w-full sm:w-auto">Clear</button>
       </div>
-      <ul id="call-history-list" class="mt-4">
-        <!-- JS will append <li> here -->
-      </ul>
-    </aside>
-
+      <div id="call-history" class="flex flex-col gap-2 mt-4">
+        <!-- Call history items will appear here -->
+      </div>
+    </section>
   </main>
-
   <script src="./script.js"></script>
 </body>
-
 </html>
