@@ -40,14 +40,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             alert(`Calling ${serviceName} (${serviceNumber})`);
 
-            const li = document.createElement('li');
+            // Create shadowed div
+            const div = document.createElement('div');
+            div.className = 'bg-white shadow-md rounded-md p-3 mb-2';
 
-            // Current time
             const now = new Date();
             const time = now.toLocaleTimeString(); // e.g. "8:32:15 PM"
 
-            li.innerHTML = `${serviceName} - ${serviceNumber} <span class="text-gray-500 ml-2">[${time}]</span>`;
-            callHistoryList.appendChild(li);
+            div.innerHTML = `
+                <p class="font-semibold">${serviceName}</p>
+                <p class="text-gray-500">${serviceNumber} <span class="text-gray-400 ml-2">[${time}]</span></p>
+            `;
+
+            callHistoryList.appendChild(div);
         });
     }
 });
