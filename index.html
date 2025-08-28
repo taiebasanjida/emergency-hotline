@@ -14,10 +14,10 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body>
+<body class="max-auto px-">
 
   <!-- Navbar -->
-  <div class="navbar bg-white text-green-700 px-6 shadow-[0_4px_6px_-1px_#0000001a]">
+  <div class="w-full max-w-[1920px] mx-auto navbar bg-white text-green-700 px-6 shadow-[0_4px_6px_-1px_#0000001a]">
     <!-- Left -->
     <div class="flex items-center gap-2">
       <img src="./assets/logo.png" alt="" class="w-16 h-16 object-contain">
@@ -40,7 +40,7 @@
 
   <!-- banner -->
   <section
-    class="bg-gradient-to-r from-green-900 via-green-700 to-green-900 h-[200px] flex flex-col justify-center items-center text-center px-6">
+    class="w-full max-w-[1920px] h-[239px] mx-auto bg-gradient-to-r from-green-900 via-green-700 to-green-900  flex flex-col justify-center items-center text-center px-6">
     <img src="./assets/logo-dark.png" alt="Logo" class="h-16 w-auto mb-6 object-contain">
     <h2 class="text-xl font-bold text-white mb-6">Emergency Service Directory</h2>
     <p class=" text-white ">
@@ -51,7 +51,7 @@
   <main class="w-11/12 mx-auto grid grid-cols-12 gap-8 py-12">
 
     <!-- Cards Section -->
-    <section class="col-span-9 bg-white p-6 rounded-lg shadow-md">
+    <section class="w-full max-w-[1920px] mx-auto  col-span-9 bg-white p-6 rounded-lg shadow-md">
       <div class="grid grid-cols-3 gap-6">
 
         <!-- Loop for 9 cards -->
@@ -71,7 +71,7 @@
           </div>
           <div class="mt-4 flex gap-2">
             <button class="btn btn-outline flex-1 text-sm" id="copy-1"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn btn-success flex-1 text-sm text-white" id="call-1"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn bg-green-500 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-1"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
 
@@ -91,7 +91,7 @@
           </div>
           <div class="mt-4 flex gap-2">
             <button class="btn btn-outline flex-1 text-sm" id="copy-2"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn btn-success flex-1 text-sm text-white" id="call-2"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn bg-green-500 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-2"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
 
@@ -111,7 +111,7 @@
           </div>
           <div class="mt-4 flex gap-2">
             <button class="btn btn-outline flex-1 text-sm" id="copy-3"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn btn-success flex-1 text-sm text-white" id="call-3"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn bg-green-500 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-3"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
 
@@ -131,7 +131,7 @@
           </div>
           <div class="mt-4 flex gap-2">
             <button class="btn btn-outline flex-1 text-sm" id="copy-4"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn btn-success flex-1 text-sm text-white" id="call-4"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-4"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
 
@@ -151,7 +151,7 @@
           </div>
           <div class="mt-4 flex gap-2">
             <button class="btn btn-outline flex-1 text-sm" id="copy-5"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn btn-success flex-1 text-sm text-white" id="call-5"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-5"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
 
@@ -171,7 +171,7 @@
           </div>
           <div class="mt-4 flex gap-2">
             <button class="btn btn-outline flex-1 text-sm" id="copy-6"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn btn-success flex-1 text-sm text-white" id="call-6"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-6"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
 
@@ -191,7 +191,7 @@
           </div>
           <div class="mt-4 flex gap-2">
             <button class="btn btn-outline flex-1 text-sm" id="copy-7"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn btn-success flex-1 text-sm text-white" id="call-7"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-7"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
 
@@ -211,7 +211,7 @@
           </div>
           <div class="mt-4 flex gap-2">
             <button class="btn btn-outline flex-1 text-sm" id="copy-8"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn btn-success flex-1 text-sm text-white" id="call-8"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-8"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
 
@@ -231,7 +231,7 @@
           </div>
           <div class="mt-4 flex gap-2">
             <button class="btn btn-outline flex-1 text-sm" id="copy-9"><i class="fa-solid fa-copy"></i> Copy</button>
-            <button class="btn btn-success flex-1 text-sm text-white" id="call-9"><i class="fa-solid fa-phone"></i> Call</button>
+            <button class="btn bg-green-600 hover:bg-green-700 border-none flex-1 text-sm text-white" id="call-9"><i class="fa-solid fa-phone"></i> Call</button>
           </div>
         </div>
 

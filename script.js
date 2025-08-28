@@ -1,57 +1,53 @@
+document.addEventListener('DOMContentLoaded', () => {
+    let hearts = 0;
+    let coins = 100;
 
-// Get navbar elements
-const heartCountEl = document.querySelector('.navbar .btn:first-child span');
-const coinCountEl = document.querySelector('.navbar .btn:nth-child(2) span');
-const callHistoryEl = document.querySelector('aside div.flex.flex-col');
-const clearHistoryBtn = document.querySelector('aside button');
+    const heartDisplay = document.getElementById('heart-count');
+    const coinDisplay = document.getElementById('coin-count');
+    const callHistoryList = document.getElementById('call-history-list');
+    const clearHistoryBtn = document.getElementById('clear-history-btn');
 
-// Initialize values
-let hearts = 0;
-let coins = parseInt(coinCountEl.textContent);
+    // Clear call history
+    clearHistoryBtn.addEventListener('click', () => {
+        callHistoryList.innerHTML = '';
+    });
 
-// Create a container inside call history
-const callHistoryContainer = document.createElement('div');
-callHistoryContainer.classList.add('flex', 'flex-col', 'gap-2', 'mt-4');
-document.querySelector('aside').appendChild(callHistoryContainer);
+    // Loop through 9 cards
+    for (let i = 1; i <= 9; i++) {
+        const heartIcon = document.getElementById(`heart-${i}`);
+        const callBtn = document.getElementById(`call-${i}`);
+        const card = document.getElementById(`card-${i}`);
 
-// Heart Icon Functionality
-const heartIcons = document.querySelectorAll('.card i.fa-heart');
-heartIcons.forEach(icon => {
-  icon.addEventListener('click', () => {
-    hearts++;
-    heartCountEl.textContent = hearts;
-    icon.classList.toggle('text-red-500'); // optional: color toggle on click
-  });
-});
+        // Heart click
+        heartIcon.addEventListener('click', () => {
+            hearts++;
+            heartDisplay.textContent = hearts;
+            heartIcon.classList.toggle('text-red-500');
+        });
 
-// Call Button Functionality
-const callButtons = document.querySelectorAll('.card .btn-success');
-callButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const card = btn.closest('.card');
-    const serviceName = card.querySelector('h3').textContent;
-    const serviceNumber = card.querySelector('h2 span').textContent;
+        // Call click
+        callBtn.addEventListener('click', () => {
+            const serviceName = card.querySelector('h3').textContent;
+            const serviceNumber = card.querySelector('h2 span').textContent;
 
-    if (coins < 20) {
-      alert('Not enough coins to make a call!');
-      return;
+            if (coins < 20) {
+                alert('Not enough coins to make a call!');
+                return;
+            }
+
+            coins -= 20;
+            coinDisplay.textContent = coins;
+
+            alert(`Calling ${serviceName} (${serviceNumber})`);
+
+            const li = document.createElement('li');
+
+            // Current time
+            const now = new Date();
+            const time = now.toLocaleTimeString(); // e.g. "8:32:15 PM"
+
+            li.innerHTML = `${serviceName} - ${serviceNumber} <span class="text-gray-500 ml-2">[${time}]</span>`;
+            callHistoryList.appendChild(li);
+        });
     }
-
-    coins -= 20;
-    coinCountEl.textContent = coins;
-
-    alert(`Calling ${serviceName} at ${serviceNumber}`);
-
-    // Add to call history
-    const historyItem = document.createElement('div');
-    historyItem.classList.add('flex', 'justify-between', 'items-center', 'p-2', 'border', 'rounded', 'bg-gray-100');
-    historyItem.innerHTML = `<span>${serviceName} - ${serviceNumber}</span>`;
-    callHistoryContainer.appendChild(historyItem);
-  });
 });
-
-// Clear History Functionality
-clearHistoryBtn.addEventListener('click', () => {
-  callHistoryContainer.innerHTML = '';
-});
-
