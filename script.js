@@ -19,28 +19,25 @@ function updateCounts() {
 
 // Toggle heart icon and update count
 function toggleHeart(heartIcon) {
-  heartIcon.classList.toggle('fa-solid');
-  heartIcon.classList.toggle('fa-regular');
-  if (heartIcon.classList.contains('fa-solid')) {
+    if (heartIcon.classList.contains('fa-regular')) {
+        heartIcon.classList.remove('fa-regular');
+        heartIcon.classList.add('fa-solid');
+    }
     heartCount++;
-  } else {
-    heartCount--;
-  }
-  updateCounts();
+    updateCounts();
 }
 
-// Format time as HH:MM AM/PM
+// বাকি ফাংশন এবং ইভেন্ট লিসেনার অপরিবর্তিত থাকবে
 function formatTime(date) {
   let hours = date.getHours();
   let minutes = date.getMinutes();
   const ampm = hours >= 12 ? 'PM' : 'AM';
   hours = hours % 12;
-  hours = hours ? hours : 12; // Convert 0 to 12
+  hours = hours ? hours : 12;
   minutes = minutes < 10 ? '0' + minutes : minutes;
   return `${hours}:${minutes} ${ampm}`;
 }
 
-// Handle call button click
 function handleCall(serviceName, serviceNumber) {
   if (coinCount < 20) {
     alert('Not enough coins to make a call!');
@@ -49,8 +46,6 @@ function handleCall(serviceName, serviceNumber) {
   coinCount -= 20;
   updateCounts();
   alert(`Calling ${serviceName}: ${serviceNumber}`);
-
-  // Add to call history with time
   const callTime = formatTime(new Date());
   const callItem = document.createElement('div');
   callItem.className = 'bg-white p-3 rounded-lg shadow flex justify-between items-center';
@@ -64,7 +59,6 @@ function handleCall(serviceName, serviceNumber) {
   callHistoryDiv.prepend(callItem);
 }
 
-// Handle copy button click
 function handleCopy(serviceNumber) {
   navigator.clipboard.writeText(serviceNumber)
     .then(() => {
@@ -77,24 +71,21 @@ function handleCopy(serviceNumber) {
     });
 }
 
-// Clear call history
 clearHistoryBtn.addEventListener('click', () => {
   callHistoryDiv.innerHTML = '<p class="text-center text-gray-500 py-4">Call history is empty</p>';
 });
 
-// Add copy count to navbar copy button
 navbarCopyBtn.innerHTML = `
   <span id="copy-count">${copyCount}</span>
   <i class="fa-solid fa-copy ml-1"></i> Copy
 `;
 
-// Add event listeners to all heart icons except the navbar heart
+// Add event listeners to all heart icons
 document.querySelectorAll('.card [id^="heart-"]').forEach(heartIcon => {
   heartIcon.addEventListener('click', () => {
     toggleHeart(heartIcon);
   });
 });
-
 
 // Add event listeners to all call buttons
 document.querySelectorAll('.call-btn').forEach(callBtn => {
