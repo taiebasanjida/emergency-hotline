@@ -11,7 +11,7 @@
 
 2 How do you create and insert a new element into the DOM?
 
-Ans:   
+Ans:  Use document.createElement() to make a new element, customize it with textContent, className, or id,     then add it to the DOM using appendChild, prepend, or insertBefore. 
 
 3 What is Event Bubbling and how does it work?
 
