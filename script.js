@@ -88,12 +88,13 @@ navbarCopyBtn.innerHTML = `
   <i class="fa-solid fa-copy ml-1"></i> Copy
 `;
 
-// Add event listeners to all heart icons
-document.querySelectorAll('[id^="heart-"]').forEach(heartIcon => {
+// Add event listeners to all heart icons except the navbar heart
+document.querySelectorAll('.card [id^="heart-"]').forEach(heartIcon => {
   heartIcon.addEventListener('click', () => {
     toggleHeart(heartIcon);
   });
 });
+
 
 // Add event listeners to all call buttons
 document.querySelectorAll('.call-btn').forEach(callBtn => {
