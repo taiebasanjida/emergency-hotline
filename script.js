@@ -43,12 +43,12 @@ function formatTime(date) {
 // Handle call button click
 function handleCall(serviceName, serviceNumber) {
   if (coinCount < 20) {
-    alert('কল করার জন্য পর্যাপ্ত কয়েন নেই!');
+    alert('Not enough coins to make a call!');
     return;
   }
   coinCount -= 20;
   updateCounts();
-  alert(`${serviceName} এ কল করা হচ্ছে: ${serviceNumber}`);
+  alert(`Calling ${serviceName}: ${serviceNumber}`);
 
   // Add to call history with time
   const callTime = formatTime(new Date());
@@ -70,16 +70,16 @@ function handleCopy(serviceNumber) {
     .then(() => {
       copyCount++;
       updateCounts();
-      alert(`${serviceNumber} কপি করা হয়েছে!`);
+      alert(`${serviceNumber} has been copied!`);
     })
     .catch(err => {
-      console.error('কপি করতে ব্যর্থ: ', err);
+      console.error('Failed to copy: ', err);
     });
 }
 
 // Clear call history
 clearHistoryBtn.addEventListener('click', () => {
-  callHistoryDiv.innerHTML = '<p class="text-center text-gray-500 py-4">কল হিস্টরি খালি</p>';
+  callHistoryDiv.innerHTML = '<p class="text-center text-gray-500 py-4">Call history is empty</p>';
 });
 
 // Add copy count to navbar copy button
@@ -118,7 +118,7 @@ document.querySelectorAll('.copy-btn').forEach(copyBtn => {
 navbarCopyBtn.addEventListener('click', () => {
   copyCount++;
   updateCounts();
-  alert('নেভবারের "Copy" বাটন ক্লিক করা হয়েছে!');
+  alert('Navbar "Copy" button has been clicked!');
 });
 
 // Initialize UI
